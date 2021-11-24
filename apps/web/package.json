@@ -1,0 +1,68 @@
+{
+  "name": "@ywst/web",
+  "private": true,
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "version": "1.0.0",
+  "main": "next.config.js",
+  "author": "fullsnacc-js",
+  "license": "ISC",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest --env=jsdom --verbose --color"
+  },
+  "dependencies": {
+    "@emotion/css": "^11.5.0",
+    "@emotion/react": "^11.6.0",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.6.0",
+    "@headlessui/react": "^1.4.2",
+    "@heroicons/react": "^1.0.5",
+    "@sanity/block-content-to-react": "^3.0.0",
+    "date-fns": "^2.26.0",
+    "next": "12.0.3",
+    "next-sanity": "^0.4.0",
+    "next-sanity-image": "^3.1.8",
+    "next-seo": "^4.28.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-icons": "^4.3.1"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.0",
+    "@emotion/babel-plugin": "^11.3.0",
+    "@sanity/types": "^2.22.0",
+    "@types/node": "16.11.7",
+    "@types/react": "17.0.34",
+    "babel-jest": "^27.3.1",
+    "babel-loader": "^8.2.3",
+    "babel-plugin-inline-react-svg": "^2.0.1",
+    "babel-plugin-macros": "^3.1.0",
+    "babel-plugin-twin": "^1.0.2",
+    "eslint": "7.32.0",
+    "eslint-config-next": "12.0.3",
+    "jest": "^27.3.1",
+    "lint-staged": "^12.0.3",
+    "prettier": "^2.4.1",
+    "sanity-codegen": "^0.9.8",
+    "tailwindcss": "^2.2.19",
+    "twin.macro": "^2.8.1",
+    "typescript": "^4.5.2"
+  },
+  "babelMacros": {
+    "twin": {
+      "preset": "emotion"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx, json, md}": [
+      "prettier --write ."
+    ],
+    "*.{ts,tsx}": [
+      "eslint '*/**/*.{ts,tsx}' --fix"
+    ]
+  }
+}

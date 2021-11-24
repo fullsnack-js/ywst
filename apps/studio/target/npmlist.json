@@ -1,0 +1,39 @@
+{"version":"1.0.0","name":"ywststudio","dependencies":{"@sanity/base":{"version":"2.21.10"},"@sanity/core":{"version":"2.21.11"},"@sanity/default-layout":{"version":"2.21.10"},"@sanity/default-login":{"version":"2.21.10"},"@sanity/desk-tool":{"version":"2.21.10"},"@sanity/vision":{"version":"2.21.10"},"prop-types":{"version":"15.7.2"},"react-dom":{"version":"17.0.2"},"react-icons":{"version":"4.3.1"},"react":{"version":"17.0.2"},"slugify":{"version":"1.6.2"},"styled-components":{"version":"5.3.3"}}},
+    "@sanity/default-login": {
+      "version": "2.21.10",
+      "resolved": "https://registry.npmjs.org/@sanity/default-login/-/default-login-2.21.10.tgz"
+    },
+    "@sanity/desk-tool": {
+      "version": "2.21.10",
+      "resolved": "https://registry.npmjs.org/@sanity/desk-tool/-/desk-tool-2.21.10.tgz"
+    },
+    "@sanity/vision": {
+      "version": "2.21.10",
+      "resolved": "https://registry.npmjs.org/@sanity/vision/-/vision-2.21.10.tgz"
+    },
+    "prop-types": {
+      "version": "15.7.2",
+      "resolved": "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz"
+    },
+    "react-dom": {
+      "version": "17.0.2",
+      "resolved": "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
+    },
+    "react-icons": {
+      "version": "4.3.1",
+      "resolved": "https://registry.npmjs.org/react-icons/-/react-icons-4.3.1.tgz"
+    },
+    "react": {
+      "version": "17.0.2",
+      "resolved": "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
+    },
+    "slugify": {
+      "version": "1.6.2",
+      "resolved": "https://registry.npmjs.org/slugify/-/slugify-1.6.2.tgz"
+    },
+    "styled-components": {
+      "version": "5.3.3",
+      "resolved": "https://registry.npmjs.org/styled-components/-/styled-components-5.3.3.tgz"
+    }
+  }
+}

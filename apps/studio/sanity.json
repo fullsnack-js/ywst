@@ -1,0 +1,38 @@
+{
+  "root": true,
+  "project": {
+    "name": "ywst-studio"
+  },
+  "api": {
+    "projectId": "9dosgtwx",
+    "dataset": "production",
+    "apiVersion": "2021-11-22"
+  },
+  "plugins": [
+    "@sanity/base",
+    "@sanity/default-layout",
+    "@sanity/default-login",
+    "@sanity/desk-tool",
+    "asset-source-unsplash",
+    "autocomplete-tags",
+    "media",
+    "icon-picker",
+    "iframe-pane",
+    "mux-input"
+  ],
+  "env": {
+    "development": {
+      "plugins": ["@sanity/vision"]
+    }
+  },
+  "parts": [
+    {
+      "name": "part:@sanity/base/schema",
+      "path": "./schemas/schema"
+    },
+    {
+      "name": "part:@sanity/desk-tool/structure",
+      "path": "./structure/deskStructure.ts"
+    }
+  ]
+}
