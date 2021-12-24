@@ -33,45 +33,72 @@ export type SanityImage = {
 export type BlockText = SanityBlock[];
 
 export type TextSection = {
+  _key: string;
   _type: "textSection";
   heading?: string;
   text: BlockText;
 };
 export type Tag = string;
 export type FaqItem = {
+  _key: string;
   _type: "faqItem";
   question: string;
   answer: SanityBlock;
 };
 
 export type FaqSection = {
+  _key: string;
   _type: "faqs";
-  title: string;
+  title?: string;
   items: FaqItem[];
 };
 
 export type NavigationItem = {
   _type: "navigationItem";
   _key: string;
-  navLink: ExternalNavItem | InternalNavItem;
+  navLink:
+    | {
+        linkType: "external";
+        link: {
+          title: string;
+          href: string;
+        };
+      }
+    | {
+        linkType: "internal";
+        link: {
+          title: string;
+          route: Route;
+        };
+      };
 };
+// expands object types one level deep
+type Expand<T> = T extends infer O ? { [K in keyof O]: O[K] } : never;
+type Id<T> = T extends object ? {} & { [P in keyof T]: Id<T[P]> } : T;
 
-export type ExternalNavItem = {
-  linkType: "external";
-  link: {
-    title: string;
-    href: string;
-  };
-};
-export type InternalNavItem = {
-  linkType: "internal";
-  link: {
-    title: string;
-    route: Route;
-  };
-};
+// expands object types recursively
+type ExpandRecursively<T> = T extends object
+  ? T extends infer O
+    ? { [K in keyof O]: ExpandRecursively<O[K]> }
+    : never
+  : T;
 
-export type AccessibleImage = {
+export interface NavRoute extends Omit<Route, "landingPage"> {
+  page: { _type: "reference"; _ref: string };
+}
+
+// post query result:
+// "mainImage":{
+// "_type":"image"
+// "alt":"woman meditating at sunset"
+// "asset":{...}
+// "source":"Photo by @jareddrice on Unsplash"
+// }
+// return from query:
+// SanityImage = {asset: object; crop?: object; hotspot?:object}
+// { SanityImage & {source?:string; alt:string;}}
+
+export type SanityAccessibleImage = {
   _type: "accessibleImage";
   image: SanityImage & {
     source?: string;
@@ -79,6 +106,17 @@ export type AccessibleImage = {
   };
 };
 
+export type AccessibleImage = SanityAccessibleImage["image"];
+
+export type ImageSection = {
+  _key: string;
+  _type: "imageSection";
+  heading?: string;
+  caption?: string;
+  text?: SanityBlock;
+  image: AccessibleImage;
+};
+export type PageSection = ImageSection | TextSection | FaqSection;
 export type InlineImage = {
   _type: "inlineImage";
   image: SanityImage;

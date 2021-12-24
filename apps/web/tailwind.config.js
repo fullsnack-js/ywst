@@ -61,6 +61,12 @@ module.exports = {
         secondary: ["Libre Franklin"],
         article: ["Cabin"],
       },
+      transitionProperty: {
+        top: "top",
+      },
+      transitionDuration: {
+        600: "600ms",
+      },
       typography: {
         xl: {
           css: {

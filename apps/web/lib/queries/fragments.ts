@@ -11,16 +11,18 @@ export const navFields = `
   ...,
   navLink{
     linkType == "internal"=> {
+      linkType,
       "link": internalLink{
         title,
         "route": link->{
           ...,
           "slug": slug.current,
-          "page": page.reference
+          "landingPage": page.reference
         }
       }
     },
     linkType == "external" => {
+      linkType,
       "link": externalLink{...,}
     },
   }
@@ -65,4 +67,16 @@ export const postFields = `
   "slug": slug.current,
   seo{${seoFields}},
   "estimatedReadingTime": round(length(pt::text(content)) / 5 / 120 )
+`;
+
+export const pageModules = `
+  ...,
+  _type == "imageSection" => {
+    ...,
+    "image": image.image{..., asset->}
+  },
+  _type == "textSection" => {
+    ...,
+    text[]{${portableTextMarks}}
+  }
 `;

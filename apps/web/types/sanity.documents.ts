@@ -1,4 +1,3 @@
-import { SanityDocument } from "@sanity/types";
 import {
   BlockContent,
   Tag,
@@ -6,15 +5,22 @@ import {
   Seo,
   NavigationItem,
   BlockText,
-  TextSection,
-  FaqSection,
   SanityBlock,
   AccessibleImage,
   Setting,
   EventCalendar,
+  PageSection,
 } from "./sanity.objects";
 
-export interface Class extends SanityDocument {
+interface BaseDocument {
+  [key: string]: unknown;
+  _id: string;
+  _type: string;
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+}
+export interface Class extends BaseDocument {
   _type: "class";
   title: string;
   level: string;
@@ -23,7 +29,7 @@ export interface Class extends SanityDocument {
   setting: Setting;
 }
 
-export interface DisplayPost extends SanityDocument {
+export interface DisplayPost extends BaseDocument {
   _type: "post";
   _id: string;
   title: string;
@@ -39,14 +45,14 @@ export interface DisplayPost extends SanityDocument {
 }
 export type Post = DisplayPost & { content: BlockContent; seo?: Seo };
 
-export interface Category extends SanityDocument {
+export interface Category extends BaseDocument {
   _type: "category";
   title: string;
   description?: string;
   mainImage?: AccessibleImage;
 }
 
-export interface Person extends SanityDocument {
+export interface Person extends BaseDocument {
   _type: "person";
   name: string;
   email: string;
@@ -57,13 +63,11 @@ export interface Person extends SanityDocument {
 }
 
 export type Author = Required<Person> & { role: "author" };
-export type Manager = Omit<Author, "bio" | "slug" | "image"> & {
+export type Manager = Pick<Person, "_id" | "name" | "email"> & {
   role: "manager";
 };
 
-export interface DisplayPost extends Omit<Post, "content" | "seo"> {}
-
-export interface Legal extends SanityDocument {
+export interface Legal extends BaseDocument {
   _type: "legal";
   title: string;
   content: BlockText;
@@ -71,18 +75,18 @@ export interface Legal extends SanityDocument {
   last_modified: string;
 }
 
-export interface Page extends SanityDocument {
+export interface Page extends BaseDocument {
   _type: "page";
   pageId: string;
   title: string;
   tagline?: SanityBlock;
-  content?: Array<TextSection | FaqSection>;
+  content?: Array<PageSection>;
   seo?: Seo;
 }
 
 export type RoutePage = Legal | Page;
 
-export interface Route extends SanityDocument {
+export interface Route extends BaseDocument {
   _type: "route";
   routeId: string;
   landingPage: RoutePage;
@@ -91,7 +95,7 @@ export interface Route extends SanityDocument {
   disallowRobots?: boolean;
 }
 
-export interface SiteSettings extends SanityDocument {
+export interface SiteSettings extends BaseDocument {
   _type: "siteSettings";
   title: string;
   contactEmail: string;

@@ -22,8 +22,8 @@ const PreviewList = ({ posts }: PreviewListProps) => {
           </p>
         </div>
         <div tw="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-          {posts.map((post) => (
-            <BlogPreviewCard key={post._id} post={post} />
+          {posts.map((post, index) => (
+            <BlogPreviewCard key={post._id ?? index} post={post} />
           ))}
         </div>
       </div>

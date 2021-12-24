@@ -1,4 +1,4 @@
-import { PortableText } from "@components/portableText/Block";
+import { PortableText } from "@components/common/portableText/Block";
 import React from "react";
 import { BlockContent, BlockText, SanityBlock } from "types/sanity.objects";
 

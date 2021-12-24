@@ -1,6 +1,6 @@
 import { DisplayPost } from "types/sanity.documents";
 import Date from "@components/common/Date";
-import Link from "next/link";
+import NextLink from "next/link";
 import { urlFor } from "@lib/sanity";
 
 interface PreviewProps {
@@ -13,8 +13,9 @@ const CategoryList = ({
   categories: DisplayPost["categories"];
 }) => (
   <div>
-    {categories.map((category) => (
+    {categories.map((category, index) => (
       <a
+        key={category._id ?? index}
         href={`http://localhost:3000${category.slug}`}
         tw="inline-block pr-2.5">
         <span tw="capitalize bg-indigo-100 text-indigo-800 inline-flex items-center px-3.5 py-0.5 rounded-full text-sm font-medium">
@@ -32,22 +33,22 @@ const BlogPreviewCard = ({ post }: PreviewProps) => {
       key={post.title}
       tw="flex flex-col rounded-lg shadow-lg overflow-hidden">
       <div tw="flex-shrink-0">
-        <Link href={`/blog/${encodeURIComponent(post.slug)}`}>
+        <NextLink href={`/blog/${encodeURIComponent(post.slug)}`}>
           <img
             tw="h-48 w-full object-cover"
             src={urlFor(post.mainImage).height(1024).width(1024).url()!}
           />
-        </Link>
+        </NextLink>
       </div>
       <div tw="flex-1 bg-white p-6 flex flex-col justify-between">
         <div tw="flex-1">
           <CategoryList categories={post.categories} />
-          <Link href={`/blog/${encodeURIComponent(post.slug)}`}>
+          <NextLink href={`/blog/${encodeURIComponent(post.slug)}`}>
             <a tw="block mt-2">
               <p tw="text-xl font-semibold text-gray-900">{post.title}</p>
               <p tw="mt-3 text-base text-gray-500">{post.excerpt}</p>
             </a>
-          </Link>
+          </NextLink>
         </div>
         <div tw="mt-6 flex items-center">
           <div tw="flex-shrink-0">

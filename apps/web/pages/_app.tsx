@@ -2,8 +2,8 @@ import Head from "next/head";
 import { NextPropsWithLayout } from "types/page";
 import { cache } from "@emotion/css";
 import { CacheProvider } from "@emotion/react";
-import GlobalStyles from "@styles/GlobalStyles";
-
+import { GlobalStyles } from "twin.macro";
+import { GlobalProvider } from "context/GlobalContext";
 function MyApp({ Component, pageProps }: NextPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
   return (

@@ -1,4 +1,7 @@
-// export {default as attachment} from "./attachment";
+// import inlineImage from "./inlineImage";
+
+export { default as attachment } from "./attachment";
+// export { default as file } from "./attachment";
 export { default as acessibleImage } from "./accessibleImage";
 export { default as accessibleVideo } from "./accessibleVideo";
 export { default as blockContent } from "./blockContent";
@@ -8,6 +11,7 @@ export { default as classSetting } from "./classSetting";
 export { default as eventCalendar } from "./eventCalendar";
 export { default as faqItem } from "./faqItem";
 export { default as faqs } from "./faqs";
+export { default as imageSection } from "./imageSection";
 export { default as inlineImage } from "./inlineImage";
 export { default as muxVideo } from "./muxVideo";
 export { default as navItem } from "./navItem";

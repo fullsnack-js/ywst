@@ -14,7 +14,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "jsxImportSource": "@emotion/react",
     "baseUrl": ".",
     "paths": {
       "@components/*": ["components/*"],
@@ -23,8 +22,15 @@
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
       "@lib/sanity": ["lib/sanity/index.ts"]
-    }
+    },
+    "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "__tests__"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "__tests__",
+    "utils/debounce.j/s"
+  ],
   "exclude": ["node_modules"]
 }

@@ -1,6 +1,7 @@
 import { externalLinkHandler, internalLinkHandler } from "./Links";
 import { config } from "@lib/sanity";
 import { createPortableTextComponent } from "next-sanity";
+import { attachmentUrlHandler } from "./attachment";
 
 export const PortableText = createPortableTextComponent({
   ...config,
@@ -11,6 +12,7 @@ export const PortableText = createPortableTextComponent({
       code: (props: any) => <code>{props.children}</code>,
       internalLink: internalLinkHandler,
       externalLink: externalLinkHandler,
+      attachment: attachmentUrlHandler,
     },
     types: {
       captionedImage: (props: any) => {

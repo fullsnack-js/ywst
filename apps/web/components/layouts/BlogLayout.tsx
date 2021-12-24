@@ -1,20 +1,21 @@
+import { ScrollHeader } from "@components/common/ScrollHeader";
+import { DEFAULT_SETTINGS } from "constants/siteSettings";
 import * as React from "react";
-import { SiteSettings } from "types/sanity.documents";
 import { Seo as SeoMeta } from "types/sanity.objects";
 import Header from "../common/header";
 import Seo from "../common/seo";
 
 interface Props {
-  siteSettings: SiteSettings;
-  children?: React.ReactNode | React.ReactNode[];
+  children?: React.ReactNode;
   seo?: SeoMeta;
 }
 
-const IndexLayout = ({ siteSettings, seo, children }: Props) => {
+const IndexLayout = ({ seo, children }: Props) => {
+  const { seo: defaultSeo, mainNav, footerNav, socials } = DEFAULT_SETTINGS;
+
   return (
     <>
-      <Seo seo={seo} defaultSeo={siteSettings.seo} />
-      <Header mainNav={siteSettings.mainNav} />
+      <Seo seo={seo} defaultSeo={defaultSeo} />
       {children}
     </>
   );

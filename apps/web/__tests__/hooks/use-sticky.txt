@@ -1,0 +1,54 @@
+// import { act, renderHook } from "@testing-library/react-hooks";
+// import { useSticky } from "../../lib/hooks/use-sticky";
+// import * as React from "react";
+// import { render, screen, fireEvent } from "@testing-library/react";
+
+// describe("useSticky hook", () => {
+//   it("should be defined", () => {
+//     expect(useSticky).toBeDefined();
+//   });
+//   test("Should render without errors with required arguments", () => {
+//     const { result } = renderHook(() =>
+//       useSticky({ minPxScrolled: 70, minTopOffset: 10, debounceMs: 100 })
+//     );
+
+//     expect(result.error).toBeUndefined();
+//   });
+// });
+
+// describe("Specific scroll behavior", () => {
+//   beforeEach(() => {
+//     Object.defineProperty(window, "scrollX", { value: 0 });
+//     Object.defineProperty(window, "scrollY", { value: 0 });
+//   });
+//   it("Should update scroll position and set visible to false when conditions are met", () => {
+//     const { result } = renderHook(() =>
+//       useSticky({ minPxScrolled: 70, minTopOffset: 10, debounceMs: 100 })
+//     );
+//     // expect(result.current.scrollX).toBe(0);
+//     // expect(result.current.scrollY).toBe(0);
+//     act(() => {
+//       fireEvent.scroll(window, { target: { scrollY: 200 } });
+//     });
+//     expect(result.current.currentScrollPos).toBe(200);
+//     expect(result.current.visible).toBe(false);
+//   });
+//   it("Should update scroll position and set visible to true when conditions are met", () => {
+//     const { result } = renderHook(() =>
+//       useSticky({ minPxScrolled: 70, minTopOffset: 10, debounceMs: 100 })
+//     );
+//     act(() => {
+//       fireEvent.scroll(window, { target: { scrollY: -100 } });
+//     });
+//     expect(result.current.currentScrollPos).toBe(200);
+//     expect(result.current.visible).toBe(true);
+//   });
+// });
+
+// // test("renders correctly", () => {
+// //   const { result } = renderHook(() =>
+// //     useSticky({ minPxScrolled: 70, minTopOffset: 10, debounceMs: 100 })
+// //   );
+// //   const { visible, scrollY, scrollDirection } = result.current;
+// //   expect(visible).toBe(false);
+// // });

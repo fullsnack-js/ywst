@@ -6,7 +6,7 @@ import {
 import { Slug } from "@sanity/types";
 import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
-import Link from "next/link";
+import NextLink from "next/link";
 import React from "react";
 
 type Props = {
@@ -16,6 +16,13 @@ type Props = {
   slug?: Slug;
   priority?: boolean;
 };
+
+// "mainImage":{
+// "_type":"image"
+// "alt":"woman meditating at sunset"
+// "asset":{...}
+// "source":"Photo by @jareddrice on Unsplash"
+// }
 
 const CoverImage: React.FC<Props> = ({
   title,
@@ -41,13 +48,13 @@ const CoverImage: React.FC<Props> = ({
   return (
     <div className="-mx-5 bg-gray-300 sm:mx-0">
       {slug ? (
-        <Link href={`/blog/${slug?.current}`}>
+        <NextLink href={`/blog/${slug?.current}`}>
           <a
             aria-label={title}
             tw="block shadow-lg hover:shadow-xl focus:shadow-xl transition-shadow duration-200">
             {image}
           </a>
-        </Link>
+        </NextLink>
       ) : (
         image
       )}

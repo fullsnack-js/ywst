@@ -1,5 +1,5 @@
-import { Author } from "@/lib/sanity/queries";
-import { urlFor } from "@/lib/sanity/sanity-utils";
+import { Author } from "types/sanity.documents";
+import { urlFor } from "@lib/sanity";
 import { asideStyles } from "./PostAside";
 
 interface Props {
@@ -13,7 +13,9 @@ export const AuthorSection = ({ author }: Props) => (
     </h3>
     <ul css={asideStyles.list}>
       {" "}
-      <li css={asideStyles.listItem} key={author._id}>
+      <li
+        tw="text-sm md:flex justify-center items-center my-4 mx-0"
+        key={author._id}>
         <div tw="space-y-4">
           <img
             tw="mx-auto h-40 w-40 rounded-full xl:w-56 xl:h-56"

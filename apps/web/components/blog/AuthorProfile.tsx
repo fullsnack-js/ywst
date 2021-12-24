@@ -1,6 +1,6 @@
 import { Author } from "types/sanity.documents";
 import { urlFor } from "@lib/sanity";
-import { PortableText } from "@components/portableText/Block";
+import { PortableText } from "@components/common/portableText/Block";
 
 type Props = {
   author: Author;

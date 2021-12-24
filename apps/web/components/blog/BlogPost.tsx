@@ -1,4 +1,4 @@
-import { Post } from "types/sanity.documents";
+import { Post as BlogPost } from "types/sanity.documents";
 import CoverImage from "./CoverImage";
 import PostBody from "./PostBody";
 import PostAside from "./PostAside";
@@ -6,7 +6,7 @@ import tw from "twin.macro";
 import Date from "@components/common/Date";
 
 type Props = {
-  post: Post;
+  post: BlogPost;
 };
 
 const Container = tw.div`p-6 sm:p-8 mx-auto max-w-5xl box-border`;

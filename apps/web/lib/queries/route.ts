@@ -1,20 +1,21 @@
-import { groq } from "next-sanity";
-// import { legalFields, pageFields } from "./fragments";
+import { getClient, sanityClient } from "@lib/sanity";
+import { Route } from "types/sanity.documents";
+import { pageModules, portableTextMarks } from "./fragments";
 
-export const allRoutePathsQuery = groq`*[_type == "route" && defined(slug.current)][].slug.current`;
+const allRoutePathsQuery = `*[_type == "route" && defined(slug.current)][].slug.current`;
 
-export const singleRouteQuery = groq`
+export const singleRouteQuery = `
   *[_type == "route" && slug.current == $slug]{
     routeId,
     "slug": slug.current,
     includeInSitemap,
-    "landingPage":  page.reference -> {
+    "landingPage":  page.link -> {
       _id,
       _type,
       title,
       _type == "legal" => {
         title,
-        contact->{...,},
+        contact->{${portableTextMarks}},
         content,
         last_modified
       },
@@ -22,8 +23,16 @@ export const singleRouteQuery = groq`
         pageId,
         title,
         tagline,
-        content
+        content[]{${pageModules}}
       }
     }
   }
 `;
+
+export async function getAllRoutesWithSlug(): Promise<string[]> {
+  return await sanityClient.fetch<string[]>(allRoutePathsQuery);
+}
+
+export async function getRoutePage({ slug }: { slug: string }) {
+  return await sanityClient.fetch<Route>(singleRouteQuery, { slug });
+}

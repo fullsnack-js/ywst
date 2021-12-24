@@ -9,7 +9,7 @@ interface Props {
   defaultSeo?: Seo;
 }
 
-const Seo = ({ seo, defaultSeo }: Props) => {
+const ComponentSeo = ({ seo, defaultSeo }: Props) => {
   const router = useRouter();
   const title = seo?.metaTitle ?? defaultSeo?.metaTitle ?? SEO.title;
   const description =
@@ -49,4 +49,4 @@ const Seo = ({ seo, defaultSeo }: Props) => {
   );
 };
 
-export default Seo;
+export default ComponentSeo;

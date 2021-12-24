@@ -1,9 +1,9 @@
 import React from "react";
-import Link from "next/link";
+import NextLink from "next/link";
 import tw, { styled, css } from "twin.macro";
 import { pathResolver } from "@utils/pathResolver";
 
-const StyledLink = styled.a({
+const StyledAnchor = styled.a({
   overflowWrap: "break-word",
   wordWrap: "break-word",
   wordBreak: "break-word",
@@ -28,12 +28,16 @@ type ExternalProps = BaseLink & {
     href: string;
   };
 };
-export function internalLinkHandler({ children, mark }: InternalProps) {
-  const href = pathResolver(mark);
+export function internalLinkHandler({
+  children,
+  mark: { type: _type, ...rest },
+}: InternalProps) {
+  const resolvedMark = { ...rest, _type };
+  const href = pathResolver(resolvedMark);
   return (
-    <Link href={href}>
-      <StyledLink>{mark?.title ?? children}</StyledLink>
-    </Link>
+    <NextLink href={href} passHref>
+      <StyledAnchor>{resolvedMark?.title ?? children}</StyledAnchor>
+    </NextLink>
   );
 }
 
@@ -41,5 +45,5 @@ export function externalLinkHandler({
   children,
   mark: { href, title },
 }: ExternalProps) {
-  return <StyledLink href={href}>{title ?? children}</StyledLink>;
+  return <StyledAnchor href={href}>{title ?? children}</StyledAnchor>;
 }

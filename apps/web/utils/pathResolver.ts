@@ -1,3 +1,5 @@
+import { isEmptyString } from "./guards";
+
 export const prefixMap = {
   page: "",
   legal: "",
@@ -11,13 +13,12 @@ type DocType = keyof typeof prefixMap;
 
 interface PathProps {
   slug: string;
-  type?: DocType;
-  _type?: DocType;
+  _type: DocType;
 }
 
-export const pathResolver = ({ slug, type, _type }: PathProps) => {
-  if (!type || !_type) return "Missing document type!";
-  const docType = _type ?? type;
+export const pathResolver = ({ slug, _type }: PathProps) => {
+  if (!_type || !slug) return "Missing document type and/or slug!";
+  const docType = _type;
   const pathPrefix = prefixMap[docType];
-  return `${pathPrefix}/${slug}`;
+  return isEmptyString(pathPrefix) ? `/${slug}` : `${pathPrefix}/${slug}`;
 };

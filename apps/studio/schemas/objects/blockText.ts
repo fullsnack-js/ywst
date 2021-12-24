@@ -1,4 +1,3 @@
-import { attachment } from "./attachment";
 import { internalLink, externalLink } from "./fields";
 
 export default {
@@ -34,7 +33,11 @@ export default {
           { title: "Emphasis", value: "em" },
           { title: "Underline", value: "underline" },
         ],
-        annotations: [externalLink, internalLink(["post", "page"]), attachment],
+        annotations: [
+          externalLink,
+          internalLink(["post", "page"]),
+          { type: "attachment" },
+        ],
       },
     },
   ],

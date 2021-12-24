@@ -1,9 +1,10 @@
 import preview from "part:sanity-plugin-icon-picker/preview";
-
+import { MdWeb } from "react-icons/md";
 export default {
   name: "page",
   type: "document",
   title: "Pages",
+  icon: MdWeb,
   fieldsets: [
     {
       name: "heading",
@@ -52,7 +53,7 @@ export default {
       type: "array",
       of: [
         { type: "textSection" },
-        // { type: "imageSection" },
+        { type: "imageSection" },
         { type: "faqs" },
         // { type: "cta" },
       ],

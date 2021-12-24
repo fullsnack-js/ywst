@@ -40,6 +40,7 @@ export default () =>
       Blog(S),
       S.divider(),
       S.documentTypeListItem("class").title("Classes").schemaType("class"),
+      S.documentTypeListItem("page").title("Home Pages").schemaType("page"),
       S.documentTypeListItem("person").schemaType("person"),
       S.documentTypeListItem("route").schemaType("route"),
       S.documentTypeListItem("legal")

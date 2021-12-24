@@ -24,7 +24,11 @@ export default {
           { title: "Underline", value: "underline" },
           { title: "Strikethrough", value: "strike-through" },
         ],
-        annotations: [externalLink, internalLink(["post", "route"])],
+        annotations: [
+          externalLink,
+          internalLink(["post", "route"]),
+          { type: "attachment" },
+        ],
       },
     },
     { type: "accessibleImage" },
